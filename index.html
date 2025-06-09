@@ -1,4 +1,84 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Free UC / Diamonds</title>
+  <style>
+    body {
+      background: #0f0f0f;
+      color: white;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    h1 {
+      color: #00ffc3;
+    }
+    .card {
+      background: #1c1c1c;
+      padding: 20px;
+      margin: 20px auto;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 0 10px #00ffc3;
+    }
+    .btn {
+      background: #00ffc3;
+      color: black;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Free UC & Diamonds</h1>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150.png?text=BGMI+X+Suit" alt="BGMI Suit" />
+    <p>Get Free UC for BGMI</p>
+    <button class="btn" onclick="redirectTo('https://tpi.li/5Cck7K6vyn')">Redeem Now</button>
+  </div>
+
+  <div class="card">
+    <img src="https://via.placeholder.com/300x150.png?text=Free+Fire+DJ+Alok" alt="Free Fire DJ Alok" />
+    <p>Get DJ Alok Character</p>
+    <button class="btn" onclick="redirectTo('https://tpi.li/2Ebuo3')">Redeem Now</button>
+  </div>
+
+  <div class="card">
+    <p>To Access Full Website, Enter Password</p>
+    <input type="password" id="pass" placeholder="Enter password">
+    <button class="btn" onclick="checkPassword()">Enter</button>
+  </div>
+
+  <script>
+    function redirectTo(link) {
+      window.location.href = link;
+    }
+
+    function checkPassword() {
+      const pass = document.getElementById("pass").value;
+      if (pass === "1234") {
+        alert("Access granted! Redirecting...");
+        window.location.href = "https://tpi.li/OzrogP"; // change link here
+      } else {
+        alert("Incorrect password");
+      }
+    }
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
 <html>
 <head>
   <title>Daily Earning Panel</title>
@@ -101,5 +181,71 @@
   window.onload = loadDashboard;
 </script>
 
+</body>
+</html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>💸 Daily Earning Panel</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      padding: 20px;
+      text-align: center;
+    }
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      max-width: 400px;
+      margin: auto;
+    }
+    .btn {
+      padding: 10px 20px;
+      background: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    h1 {
+      color: #008000;
+    }
+  </style>
+</head>
+<body>
+  <h1>💸 Daily Earning Panel</h1>
+  <div class="card">
+    <p><strong>Earn ₹20 per ad</strong><br>Minimum Withdraw: ₹3000</p>
+    <p>Today’s Earnings: ₹<span id="earning">0</span></p>
+    <p>Ads Remaining: <span id="adsLeft">5</span></p>
+    <button class="btn" onclick="watchAd()">Watch Ad</button>
+  </div>
+
+  <div class="card" style="margin-top:20px;">
+    <h2>Top Earning Apps</h2>
+    <p><a href="https://play.google.com/store/apps/details?id=com.dream11.fantasy.cricket.app">Dream11</a></p>
+    <p><a href="https://play.google.com/store/apps/details?id=com.phonepe.app">PhonePe</a></p>
+    <p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user">Google Pay</a></p>
+  </div>
+
+  <script>
+    let earnings = 0;
+    let adsLeft = 5;
+
+    function watchAd() {
+      if (adsLeft > 0) {
+        earnings += 20;
+        adsLeft--;
+        document.getElementById("earning").textContent = earnings;
+        document.getElementById("adsLeft").textContent = adsLeft;
+      } else {
+        alert("No more ads today!");
+      }
+    }
+  </script>
 </body>
 </html>
