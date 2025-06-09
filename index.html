@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Free UC / Diamonds</title>
+  <title>Reward Earning Center</title>
   <style>
     body {
-      background: #0f0f0f;
-      color: white;
+      background: #121212;
+      color: #fff;
       font-family: Arial, sans-serif;
       text-align: center;
       padding: 20px;
@@ -16,7 +16,7 @@
       color: #00ffc3;
     }
     .card {
-      background: #1c1c1c;
+      background: #1e1e1e;
       padding: 20px;
       margin: 20px auto;
       border-radius: 12px;
@@ -37,214 +37,36 @@
     img {
       width: 100%;
       border-radius: 8px;
+      margin-bottom: 10px;
+    }
+    .note {
+      font-size: 14px;
+      color: #ccc;
+      margin-top: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Free UC & Diamonds</h1>
+
+  <h1>🎁 Free Rewards & Earnings</h1>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x150.png?text=BGMI+X+Suit" alt="BGMI Suit" />
-    <p>Get Free UC for BGMI</p>
-    <button class="btn" onclick="redirectTo('https://tpi.li/5Cck7K6vyn')">Redeem Now</button>
+    <img src="https://via.placeholder.com/300x150.png?text=Reward+1" alt="Reward Image" />
+    <p>Earn by visiting this link</p>
+    <button class="btn" onclick="redirectTo('https://linkshortner.example/abc123')">Click Here</button>
+    <p class="note">Shortened link — may contain ads</p>
   </div>
 
   <div class="card">
-    <img src="https://via.placeholder.com/300x150.png?text=Free+Fire+DJ+Alok" alt="Free Fire DJ Alok" />
-    <p>Get DJ Alok Character</p>
-    <button class="btn" onclick="redirectTo('https://tpi.li/2Ebuo3')">Redeem Now</button>
-  </div>
-
-  <div class="card">
-    <p>To Access Full Website, Enter Password</p>
-    <input type="password" id="pass" placeholder="Enter password">
-    <button class="btn" onclick="checkPassword()">Enter</button>
+    <img src="https://via.placeholder.com/300x150.png?text=Reward+2" alt="Reward Image" />
+    <p>Get bonus earnings</p>
+    <button class="btn" onclick="redirectTo('https://linkshortner.example/def456')">Click Here</button>
+    <p class="note">Shortened link — may contain ads</p>
   </div>
 
   <script>
     function redirectTo(link) {
       window.location.href = link;
-    }
-
-    function checkPassword() {
-      const pass = document.getElementById("pass").value;
-      if (pass === "1234") {
-        alert("Access granted! Redirecting...");
-        window.location.href = "https://tpi.li/OzrogP"; // change link here
-      } else {
-        alert("Incorrect password");
-      }
-    }
-  </script>
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Daily Earning Panel</title>
-  <style>
-    body {
-      font-family: Arial;
-      background: #f9f9f9;
-      text-align: center;
-      padding: 50px;
-    }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      display: inline-block;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: green;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-    #login {
-      margin-bottom: 20px;
-    }
-  </style>
-</head>
-<body>
-
-<div class="card" id="loginCard">
-  <h2>Login</h2>
-  <input type="text" id="username" placeholder="Enter your name" />
-  <br><br>
-  <button onclick="login()">Login</button>
-</div>
-
-<div class="card" id="dashboard" style="display:none;">
-  <h1>👋 Welcome, <span id="nameDisplay"></span></h1>
-  <p><strong>Earn ₹20 per ad</strong> | Minimum Withdraw: ₹3000</p>
-  <p>Today's Earnings: ₹<span id="earning">0</span></p>
-  <p>Ads Left: <span id="adsLeft">5</span></p>
-  <button onclick="watchAd()">Watch Ad</button>
-</div>
-
-<script>
-  const maxAds = 5;
-  const earnPerAd = 20;
-
-  function login() {
-    const name = document.getElementById("username").value;
-    if (!name) return alert("Please enter your name.");
-
-    localStorage.setItem("user", name);
-    loadDashboard();
-  }
-
-  function loadDashboard() {
-    const user = localStorage.getItem("user");
-    if (!user) return;
-
-    document.getElementById("loginCard").style.display = "none";
-    document.getElementById("dashboard").style.display = "block";
-    document.getElementById("nameDisplay").innerText = user;
-
-    const today = new Date().toDateString();
-    const lastDate = localStorage.getItem("lastDate");
-
-    if (lastDate !== today) {
-      localStorage.setItem("earnings", "0");
-      localStorage.setItem("adsLeft", maxAds);
-      localStorage.setItem("lastDate", today);
-    }
-
-    document.getElementById("earning").innerText = localStorage.getItem("earnings");
-    document.getElementById("adsLeft").innerText = localStorage.getItem("adsLeft");
-  }
-
-  function watchAd() {
-    let adsLeft = parseInt(localStorage.getItem("adsLeft"));
-    let earnings = parseInt(localStorage.getItem("earnings"));
-
-    if (adsLeft > 0) {
-      adsLeft--;
-      earnings += earnPerAd;
-
-      localStorage.setItem("adsLeft", adsLeft);
-      localStorage.setItem("earnings", earnings);
-
-      document.getElementById("earning").innerText = earnings;
-      document.getElementById("adsLeft").innerText = adsLeft;
-    } else {
-      alert("No more ads for today! Come back tomorrow.");
-    }
-  }
-
-  // Auto-login if already logged in
-  window.onload = loadDashboard;
-</script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html>
-<head>
-  <title>💸 Daily Earning Panel</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-      padding: 20px;
-      text-align: center;
-    }
-    .card {
-      background: #fff;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
-      max-width: 400px;
-      margin: auto;
-    }
-    .btn {
-      padding: 10px 20px;
-      background: green;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      margin-top: 10px;
-    }
-    h1 {
-      color: #008000;
-    }
-  </style>
-</head>
-<body>
-  <h1>💸 Daily Earning Panel</h1>
-  <div class="card">
-    <p><strong>Earn ₹20 per ad</strong><br>Minimum Withdraw: ₹3000</p>
-    <p>Today’s Earnings: ₹<span id="earning">0</span></p>
-    <p>Ads Remaining: <span id="adsLeft">5</span></p>
-    <button class="btn" onclick="watchAd()">Watch Ad</button>
-  </div>
-
-  <div class="card" style="margin-top:20px;">
-    <h2>Top Earning Apps</h2>
-    <p><a href="https://play.google.com/store/apps/details?id=com.dream11.fantasy.cricket.app">Dream11</a></p>
-    <p><a href="https://play.google.com/store/apps/details?id=com.phonepe.app">PhonePe</a></p>
-    <p><a href="https://play.google.com/store/apps/details?id=com.google.android.apps.nbu.paisa.user">Google Pay</a></p>
-  </div>
-
-  <script>
-    let earnings = 0;
-    let adsLeft = 5;
-
-    function watchAd() {
-      if (adsLeft > 0) {
-        earnings += 20;
-        adsLeft--;
-        document.getElementById("earning").textContent = earnings;
-        document.getElementById("adsLeft").textContent = adsLeft;
-      } else {
-        alert("No more ads today!");
-      }
     }
   </script>
 </body>
