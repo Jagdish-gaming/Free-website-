@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Daily Earning Panel</title>
+  <style>
+    body { font-family: Arial; background: #f9f9f9; text-align: center; padding: 40px; }
+    .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 10px auto; max-width: 400px; }
+    button { padding: 10px 20px; font-size: 16px; background-color: green; color: white; border: none; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>💸 Daily Earning Panel</h1>
+    <p><strong>Earn ₹20 per ad</strong><br>Minimum Withdraw: ₹3000</p>
+    <p>Today’s Earnings: ₹<span id="earning">0</span></p>
+    <p>Ads Remaining: <span id="adsLeft">5</span></p>
+    <button onclick="watchAd()">Watch Ad</button>
+  </div>
+
+  <script>
+    let earnings = 0;
+    let adsLeft = 5;
+    function watchAd() {
+      if (adsLeft > 0) {
+        earnings += 20;
+        adsLeft--;
+        document.getElementById("earning").innerText = earnings;
+        document.getElementById("adsLeft").innerText = adsLeft;
+      } else {
+        alert("No more ads today! Come back tomorrow.");
+      }
+    }
+  </script>
+</body>
+</html>
