@@ -3,33 +3,103 @@
 <head>
   <title>Daily Earning Panel</title>
   <style>
-    body { font-family: Arial; background: #f9f9f9; text-align: center; padding: 40px; }
-    .card { background: white; border-radius: 10px; padding: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin: 10px auto; max-width: 400px; }
-    button { padding: 10px 20px; font-size: 16px; background-color: green; color: white; border: none; border-radius: 5px; }
+    body {
+      font-family: Arial;
+      background: #f9f9f9;
+      text-align: center;
+      padding: 50px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: green;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    #login {
+      margin-bottom: 20px;
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>💸 Daily Earning Panel</h1>
-    <p><strong>Earn ₹20 per ad</strong><br>Minimum Withdraw: ₹3000</p>
-    <p>Today’s Earnings: ₹<span id="earning">0</span></p>
-    <p>Ads Remaining: <span id="adsLeft">5</span></p>
-    <button onclick="watchAd()">Watch Ad</button>
-  </div>
 
-  <script>
-    let earnings = 0;
-    let adsLeft = 5;
-    function watchAd() {
-      if (adsLeft > 0) {
-        earnings += 20;
-        adsLeft--;
-        document.getElementById("earning").innerText = earnings;
-        document.getElementById("adsLeft").innerText = adsLeft;
-      } else {
-        alert("No more ads today! Come back tomorrow.");
-      }
+<div class="card" id="loginCard">
+  <h2>Login</h2>
+  <input type="text" id="username" placeholder="Enter your name" />
+  <br><br>
+  <button onclick="login()">Login</button>
+</div>
+
+<div class="card" id="dashboard" style="display:none;">
+  <h1>👋 Welcome, <span id="nameDisplay"></span></h1>
+  <p><strong>Earn ₹20 per ad</strong> | Minimum Withdraw: ₹3000</p>
+  <p>Today's Earnings: ₹<span id="earning">0</span></p>
+  <p>Ads Left: <span id="adsLeft">5</span></p>
+  <button onclick="watchAd()">Watch Ad</button>
+</div>
+
+<script>
+  const maxAds = 5;
+  const earnPerAd = 20;
+
+  function login() {
+    const name = document.getElementById("username").value;
+    if (!name) return alert("Please enter your name.");
+
+    localStorage.setItem("user", name);
+    loadDashboard();
+  }
+
+  function loadDashboard() {
+    const user = localStorage.getItem("user");
+    if (!user) return;
+
+    document.getElementById("loginCard").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+    document.getElementById("nameDisplay").innerText = user;
+
+    const today = new Date().toDateString();
+    const lastDate = localStorage.getItem("lastDate");
+
+    if (lastDate !== today) {
+      localStorage.setItem("earnings", "0");
+      localStorage.setItem("adsLeft", maxAds);
+      localStorage.setItem("lastDate", today);
     }
-  </script>
+
+    document.getElementById("earning").innerText = localStorage.getItem("earnings");
+    document.getElementById("adsLeft").innerText = localStorage.getItem("adsLeft");
+  }
+
+  function watchAd() {
+    let adsLeft = parseInt(localStorage.getItem("adsLeft"));
+    let earnings = parseInt(localStorage.getItem("earnings"));
+
+    if (adsLeft > 0) {
+      adsLeft--;
+      earnings += earnPerAd;
+
+      localStorage.setItem("adsLeft", adsLeft);
+      localStorage.setItem("earnings", earnings);
+
+      document.getElementById("earning").innerText = earnings;
+      document.getElementById("adsLeft").innerText = adsLeft;
+    } else {
+      alert("No more ads for today! Come back tomorrow.");
+    }
+  }
+
+  // Auto-login if already logged in
+  window.onload = loadDashboard;
+</script>
+
 </body>
 </html>
